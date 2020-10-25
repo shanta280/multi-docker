@@ -16,4 +16,8 @@ after_success:
   - docker build -t shanta280/multi-nginx ./nginx
   - docker build -t shanta280/multi-server ./server
   - docker build -t shanta280/multi-worker ./worker
-
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push shanta280/multi-client
+  - docker push shanta280/multi-nginx
+  - docker push shanta280/multi-server
+  - docker push shanta280/multi-worker
